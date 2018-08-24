@@ -1,0 +1,20 @@
+.idea
+.mvn
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+
+*.class
+.settings/
+.project
+.classpath
+hs_err_pid*
