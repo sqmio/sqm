@@ -1,5 +1,4 @@
 .idea
-.mvn
 
 # Intellij
 .idea/
@@ -12,6 +11,7 @@
 # Maven
 log/
 target/
+mvnw*
 
 *.class
 .settings/
