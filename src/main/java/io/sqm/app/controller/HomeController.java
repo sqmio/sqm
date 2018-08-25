@@ -12,7 +12,7 @@ public class HomeController {
     @RequestMapping(method = RequestMethod.GET)
     public Example showHomePage() {
         Example example = new Example();
-        example.setName("Hi");
+        example.setName("Hi!!!");
         return example;
     }
 
