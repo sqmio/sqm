@@ -10,6 +10,7 @@ public class HomeController {
 
     @RequestMapping()
     public Example showHomePage() {
+        System.out.println("test");
         Example example = new Example();
         example.setName("Hi...");
         return example;
