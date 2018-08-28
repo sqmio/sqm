@@ -11,7 +11,7 @@ public class HomeController {
     @RequestMapping()
     public Example showHomePage() {
         Example example = new Example();
-        example.setName("Hi...");
+        example.setName("Hi...!");
         return example;
     }
 
