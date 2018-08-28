@@ -1,2 +1,2 @@
-[![Build Status](https://travis-ci.org/sqmio/sqm.svg?branch=master)](https://travis-ci.org/sqmio/sqm)[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=com.sonarqube.examples%3Ajava-maven-travis-project&metric=alert_status)](https://sonarcloud.io/dashboard/index/com.sonarqube.examples:java-maven-travis-project)
+[![Build Status](https://travis-ci.org/sqmio/sqm.svg?branch=master)](https://travis-ci.org/sqmio/sqm)[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=io.sqm:app&metric=alert_status)](https://sonarcloud.io/dashboard?id=io.sqm%3Aapp)
 # sqm
