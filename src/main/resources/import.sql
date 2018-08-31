@@ -1,3 +1,10 @@
 INSERT INTO claim (id, description) VALUES ('1','test1');
 INSERT INTO claim (id, description) VALUES ('2','test2');
 INSERT INTO claim (id, description) VALUES ('4','test4');
+INSERT INTO claim (id, description) VALUES ('5','test5');
+INSERT INTO claim (id, description) VALUES ('6','test6');
+INSERT INTO claim (id, description) VALUES ('7','test7');
+INSERT INTO claim (id, description) VALUES ('8','test8');
+INSERT INTO claim (id, description) VALUES ('9','test9');
+INSERT INTO claim (id, description) VALUES ('11','test11');
+INSERT INTO claim (id, description) VALUES ('12','test12');
