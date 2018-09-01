@@ -21,10 +21,17 @@ public class Claim {
     @Access(AccessType.PROPERTY)
     private Long id;
 
+    @Column(name = "short_description")
+    private String shortDescription;
+
     @Column(name = "description", columnDefinition = "text")
     private String description;
 
     @ManyToOne()
     @JoinColumn(name = "customer_id")
     private User customer;
+
+    @ManyToOne
+    @JoinColumn(name = "status_id")
+    private ClaimStatus status;
 }
