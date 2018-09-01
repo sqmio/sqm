@@ -2,10 +2,9 @@ package io.sqm.app.resource;
 
 import io.sqm.app.entity.Claim;
 import io.sqm.app.service.ClaimService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import io.sqm.app.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/")
@@ -13,13 +12,25 @@ import org.springframework.web.bind.annotation.RestController;
 public class ClaimResource {
 
     private ClaimService claimService;
+    private UserService userService;
 
-    public ClaimResource(ClaimService claimService) {
+    @Autowired
+    public ClaimResource(ClaimService claimService, UserService userService) {
         this.claimService = claimService;
+        this.userService = userService;
     }
 
     @GetMapping("/claims")
     public Iterable<Claim> claims() {
         return claimService.claims();
+    }
+
+    @PostMapping(value = "/claims/add")
+    public void createClaim(@RequestParam(value = "description") String description,
+                            @RequestParam(value = "customerLogin") String customerLogin) {
+        Claim claim = new Claim();
+        claim.setDescription(description);
+        claim.setCustomer(userService.getUserByLogin(customerLogin));
+        claimService.save(claim);
     }
 }

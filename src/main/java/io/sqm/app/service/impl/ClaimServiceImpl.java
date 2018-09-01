@@ -20,7 +20,7 @@ public class ClaimServiceImpl implements ClaimService {
     }
 
     @Override
-    public void add(Claim claim) {
+    public void save(Claim claim) {
         claimRepository.save(claim);
     }
 }

@@ -6,5 +6,5 @@ public interface ClaimService {
 
     Iterable<Claim> claims();
 
-    void add(Claim claim);
+    void save(Claim claim);
 }
