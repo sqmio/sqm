@@ -21,7 +21,7 @@ public class Claim {
     @Access(AccessType.PROPERTY)
     private Long id;
 
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "text")
     private String description;
 
     @ManyToOne()
