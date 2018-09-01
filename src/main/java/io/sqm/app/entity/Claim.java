@@ -23,4 +23,8 @@ public class Claim {
 
     @Column(name = "description")
     private String description;
+
+    @ManyToOne()
+    @JoinColumn(name = "customer_id")
+    private User customer;
 }
