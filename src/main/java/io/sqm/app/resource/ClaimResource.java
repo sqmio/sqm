@@ -1,6 +1,7 @@
 package io.sqm.app.resource;
 
 import io.sqm.app.entity.Claim;
+import io.sqm.app.resource.exception.RequestNotFoundException;
 import io.sqm.app.service.ClaimService;
 import io.sqm.app.service.ClaimStatusService;
 import io.sqm.app.service.UserService;
@@ -25,7 +26,16 @@ public class ClaimResource {
 
     @GetMapping("/claims")
     public Iterable<Claim> claims() {
-        return claimService.claims();
+        return claimService.getAll();
+    }
+
+    @GetMapping("/claim/{id}")
+    public Claim claim(@PathVariable("id") Long id) {
+        Claim claim = claimService.getById(id);
+        if (claim == null) {
+            throw new RequestNotFoundException("Claim with id " + id + " not found");
+        }
+        return claim;
     }
 
     @PostMapping(value = "/claims/add")
