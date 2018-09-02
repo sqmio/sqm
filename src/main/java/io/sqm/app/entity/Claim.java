@@ -1,8 +1,10 @@
 package io.sqm.app.entity;
 
+import io.sqm.app.entity.converter.CurrencyConverter;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 
 @NoArgsConstructor
@@ -27,11 +29,18 @@ public class Claim {
     @Column(name = "description", columnDefinition = "text")
     private String description;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "customer_id")
     private User customer;
 
     @ManyToOne
     @JoinColumn(name = "status_id")
     private ClaimStatus status;
+
+    @Column(name = "req_money")
+    private BigDecimal reqMoney;
+
+    @Convert(converter = CurrencyConverter.class)
+    @Column(name = "req_currency")
+    private Currency reqCurrency;
 }
