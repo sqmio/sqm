@@ -15,8 +15,13 @@ public class ClaimServiceImpl implements ClaimService {
     }
 
     @Override
-    public Iterable<Claim> claims() {
+    public Iterable<Claim> getAll() {
         return claimRepository.findAll();
+    }
+
+    @Override
+    public Claim getById(Long id) {
+        return claimRepository.getClaimById(id);
     }
 
     @Override

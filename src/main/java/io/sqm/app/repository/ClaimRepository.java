@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ClaimRepository extends CrudRepository<Claim, Long> {
+
+    public Claim getClaimById(Long id);
 }
