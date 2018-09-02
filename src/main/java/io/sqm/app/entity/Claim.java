@@ -43,4 +43,8 @@ public class Claim {
     @Convert(converter = CurrencyConverter.class)
     @Column(name = "req_currency")
     private Currency reqCurrency;
+
+    @ManyToOne
+    @JoinColumn(name = "assigned_group_id")
+    private Group assignedGroup;
 }
