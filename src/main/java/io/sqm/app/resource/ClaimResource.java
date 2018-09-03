@@ -5,12 +5,15 @@ import io.sqm.app.resource.exception.RequestNotFoundException;
 import io.sqm.app.service.ClaimService;
 import io.sqm.app.service.ClaimStatusService;
 import io.sqm.app.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/")
+@RequestMapping(value = "api/", produces = "application/json")
 @CrossOrigin
+@Api(tags = {"Claim"})
 public class ClaimResource {
 
     private ClaimService claimService;
@@ -25,11 +28,13 @@ public class ClaimResource {
     }
 
     @GetMapping("/claims")
+    @ApiOperation(value = "Operation to get all claims")
     public Iterable<Claim> claims() {
         return claimService.getAll();
     }
 
     @GetMapping("/claim/{id}")
+    @ApiOperation(value = "Operation to get claim by id")
     public Claim claim(@PathVariable("id") Long id) {
         Claim claim = claimService.getById(id);
         if (claim == null) {
@@ -39,6 +44,7 @@ public class ClaimResource {
     }
 
     @PostMapping(value = "/claims/add")
+    @ApiOperation(value = "Operation to create claim", hidden = true)
     public void createClaim(@RequestParam(value = "description") String description,
                             @RequestParam(value = "customerLogin") String customerLogin,
                             @RequestParam(value = "statusId") Long statusId) {
