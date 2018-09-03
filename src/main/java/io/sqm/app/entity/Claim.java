@@ -1,5 +1,6 @@
 package io.sqm.app.entity;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.sqm.app.entity.converter.CurrencyConverter;
 import lombok.*;
 
@@ -14,7 +15,8 @@ import java.math.BigDecimal;
 @Builder
 @Entity
 @Table(name = "claim")
-public class Claim {
+@JsonPropertyOrder({"id", "status", "createdDate", "lastModifiedDate"})
+public class Claim extends AbstractBaseEntity {
 
     @Id
     @Column(name = "id")
