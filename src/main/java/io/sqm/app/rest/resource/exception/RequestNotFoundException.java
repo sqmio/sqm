@@ -1,4 +1,4 @@
-package io.sqm.app.resource.exception;
+package io.sqm.app.rest.resource.exception;
 
 import org.springframework.core.NestedRuntimeException;
 import org.springframework.http.HttpStatus;

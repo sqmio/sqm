@@ -24,10 +24,11 @@ abstract class AbstractBaseEntity {
     @PrePersist
     void onCreate() {
         setCreatedDate(new Timestamp((new Date()).getTime()));
+        setLastModifiedDate(new Timestamp((new Date()).getTime()));
     }
 
     @PreUpdate
     void onPersist() {
-        this.setLastModifiedDate(new Timestamp((new Date()).getTime()));
+        setLastModifiedDate(new Timestamp((new Date()).getTime()));
     }
 }
