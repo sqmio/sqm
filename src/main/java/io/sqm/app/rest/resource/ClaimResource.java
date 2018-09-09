@@ -1,7 +1,10 @@
-package io.sqm.app.resource;
+package io.sqm.app.rest.resource;
 
 import io.sqm.app.entity.Claim;
-import io.sqm.app.resource.exception.RequestNotFoundException;
+import io.sqm.app.entity.Currency;
+import io.sqm.app.entity.User;
+import io.sqm.app.rest.form.ClaimForm;
+import io.sqm.app.rest.resource.exception.RequestNotFoundException;
 import io.sqm.app.service.ClaimService;
 import io.sqm.app.service.ClaimStatusService;
 import io.sqm.app.service.UserService;
@@ -10,6 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -45,15 +49,23 @@ public class ClaimResource {
         return claim;
     }
 
-    @PostMapping(value = "/claims/add")
-    @ApiOperation(value = "Operation to create claim", hidden = true)
-    public void createClaim(@RequestParam(value = "description") String description,
-                            @RequestParam(value = "customerLogin") String customerLogin,
-                            @RequestParam(value = "statusId") Long statusId) {
-        Claim claim = new Claim();
-        claim.setDescription(description);
-        claim.setCustomer(userService.getUserByLogin(customerLogin));
-        claim.setStatus(claimStatusService.getById(statusId));
+    @PostMapping(value = "/claim/create")
+    @ApiOperation(value = "Operation to create claim")
+    public void createClaim(@Valid @RequestBody ClaimForm claimForm) {
+        Claim claim = createClaimFromForm(claimForm);
+        claim.setStatus(claimStatusService.getById(1L));
         claimService.save(claim);
+    }
+
+    private Claim createClaimFromForm(ClaimForm claimForm) {
+        Claim.ClaimBuilder claimBuilder = Claim.builder();
+        User customer = userService.getUserByLogin(claimForm.getCustomerLogin());
+        Currency currency = Currency.find(claimForm.getReqCurrency());
+        claimBuilder.description(claimForm.getDescription());
+        claimBuilder.shortDescription(claimForm.getShortDescription());
+        claimBuilder.customer(customer);
+        claimBuilder.reqMoney(claimForm.getReqMoney());
+        claimBuilder.reqCurrency(currency);
+        return claimBuilder.build();
     }
 }

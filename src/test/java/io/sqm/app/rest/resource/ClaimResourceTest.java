@@ -1,4 +1,4 @@
-package io.sqm.app.resource;
+package io.sqm.app.rest.resource;
 
 import io.sqm.app.entity.Claim;
 import io.sqm.app.service.ClaimService;
