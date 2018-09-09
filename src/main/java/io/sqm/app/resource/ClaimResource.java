@@ -10,6 +10,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "api/", produces = "application/json")
 @CrossOrigin
@@ -29,7 +31,7 @@ public class ClaimResource {
 
     @GetMapping("/claims")
     @ApiOperation(value = "Operation to get all claims")
-    public Iterable<Claim> claims() {
+    public List<Claim> claims() {
         return claimService.getAll();
     }
 
