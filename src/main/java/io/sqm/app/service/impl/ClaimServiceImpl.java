@@ -5,6 +5,8 @@ import io.sqm.app.repository.ClaimRepository;
 import io.sqm.app.service.ClaimService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClaimServiceImpl implements ClaimService {
 
@@ -15,7 +17,7 @@ public class ClaimServiceImpl implements ClaimService {
     }
 
     @Override
-    public Iterable<Claim> getAll() {
+    public List<Claim> getAll() {
         return claimRepository.findAll();
     }
 
